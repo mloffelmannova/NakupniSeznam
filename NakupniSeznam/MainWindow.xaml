@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800" Background="LightGray">
     <Grid>
         <StackPanel>
-            <TextBox x:Name="polozky" Width="300" Margin="10" />
+            <TextBox x:Name="polozky" Width="300" Margin="10" KeyDown="polozky_KeyDown" />
             <Button Content="Přidat" Click="AddButton_Click" Width="90" Margin="10" 
                     Foreground="white" Background="Gray"/>
             <Button x:Name="vytvorit" Width="90" Click="vytvorit_Click" Margin="10" Foreground="White" Background="Gray" Content="Vytvořit"/>
