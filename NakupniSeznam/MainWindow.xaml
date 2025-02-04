@@ -1,0 +1,21 @@
+﻿<Window x:Class="NakupniSeznam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NakupniSeznam"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="LightGray">
+    <Grid>
+        <StackPanel>
+            <TextBox x:Name="polozky" Width="300" Margin="10" />
+            <Button Content="Přidat" Click="AddButton_Click" Width="90" Margin="10" 
+                    Foreground="white" Background="Gray"/>
+            <Button x:Name="vytvorit" Width="90" Click="vytvorit_Click" Margin="10" Foreground="White" Background="Gray" Content="Vytvořit"/>
+            <Button x:Name="nacist" Width="90" Click="nacist_Click" Margin="10" Foreground="White" Background="Gray" Content="Načíst"/>
+            <Button Content="Odebrat" Click="RemoveButton_Click" Width="90" />
+            <Button Content="Přejmenovat" Click="RenameButton_Click" Width="90" Margin="10" />
+            <ListBox x:Name="nakupniListek" Width="400" Height="250" Background="WhiteSmoke"/>
+        </StackPanel>
+    </Grid>
+</Window>
