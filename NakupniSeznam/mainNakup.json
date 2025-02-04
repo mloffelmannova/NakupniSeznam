@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NakupniSeznam
+{
+    class mainNakup
+  {
+    "public" "partial",
+    "class": null,
+    "MainWindow": "Window",
+    {
+      "public" "ObservableCollection<string>",
+      "NakupniListek" { "get;" "set;" },
+
+      "public" "MainWindow()",
+      {
+        "InitializeComponent();" "NakupniListek",
+        "=" "new",
+        "ObservableCollection<string>();" "nakupniListek.ItemsSource",
+        "=" "NakupniListek;"
+      },
+
+      "private" "void",
+      "AddButton_Click(object" "sender",
+      "RoutedEventArgs" "e)",
+      {
+        "string" "polozka",
+        "=" "polozky.Text;",
+        "if" "(!string.IsNullOrWhiteSpace(polozka))",
+        {
+          "NakupniListek.Add(polozka);" "polozky.Clear();"
+        }
+      }
+    }
+  }
+}
