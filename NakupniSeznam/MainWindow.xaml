@@ -9,13 +9,14 @@
     <Grid>
         <StackPanel>
             <TextBox x:Name="polozky" Width="300" Margin="10" />
-            <Button Content="Přidat" Click="AddButton_Click" Width="90" Margin="10" 
-                    Foreground="white" Background="Gray"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Přidat" Click="AddButton_Click" Width="90" Margin="10" />
             <Button x:Name="vytvorit" Width="90" Click="vytvorit_Click" Margin="10" Foreground="White" Background="Gray" Content="Vytvořit"/>
-            <Button x:Name="nacist" Width="90" Click="nacist_Click" Margin="10" Foreground="White" Background="Gray" Content="Načíst"/>
-            <Button Content="Odebrat" Click="RemoveButton_Click" Width="90" />
-            <Button Content="Přejmenovat" Click="RenameButton_Click" Width="90" Margin="10" />
+                <Button x:Name="nacist" Width="90" Click="nacist_Click" Margin="10"  Content="Načíst"/>
+                <Button Content="Odebrat" Click="RemoveButton_Click" Width="90" Margin="10" Foreground="White" Background="Gray"/>
+                <Button Content="Přejmenovat" Click="RenameButton_Click" Width="90" Margin="10" />
+            </StackPanel>
             <ListBox x:Name="nakupniListek" Width="400" Height="250" Background="WhiteSmoke"/>
-        </StackPanel>
+            </StackPanel>
     </Grid>
 </Window>
