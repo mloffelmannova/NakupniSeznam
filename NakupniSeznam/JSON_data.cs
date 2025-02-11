@@ -8,6 +8,6 @@ namespace NakupniSeznam
 {
     internal class JSON_data
     {
-        public List<string> NakupniListek { get; set; }
+        public List<string> NakupniListek { get; set; } = new List<string>();
     }
 }

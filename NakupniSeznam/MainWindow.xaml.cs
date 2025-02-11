@@ -11,6 +11,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics;
 
 namespace NakupniSeznam
 {
@@ -27,10 +29,19 @@ namespace NakupniSeznam
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             JSON_data nakup = new JSON_data();
+
             string polozka = polozky.Text;
+
             if (!string.IsNullOrWhiteSpace(polozka))
             {
-                nakup.NakupniListek.Add(polozka);
+                var itemsSource = nakupniListek.ItemsSource as ObservableCollection<ListBoxItem>;
+                if (itemsSource == null)
+                {
+                    itemsSource = new ObservableCollection<ListBoxItem>();
+                    nakupniListek.ItemsSource = itemsSource;
+                }
+
+                itemsSource.Add(new ListBoxItem() { Content = polozka });
                 polozky.Clear();
             }
         }
@@ -58,12 +69,26 @@ namespace NakupniSeznam
                 }
             }
         }
+
         private void vytvorit_Click(object sender, RoutedEventArgs e)
         {
-            JSON_data nakup = new JSON_data();
-            string json = JsonConvert.SerializeObject(nakup.NakupniListek);
+            List<string> informace = new List<string>();
+
+            foreach (ListBoxItem item in nakupniListek.ItemsSource)
+            {
+                informace.Add((string)item.Content);
+            }
+
+            JSON_data nakup = new JSON_data()
+            {
+                NakupniListek = informace
+            };
+
+            string json = JsonConvert.SerializeObject(nakup);
+
             File.WriteAllText($"{Environment.CurrentDirectory}/file.json", json);
         }
+
 
         private void nacist_Click(object sender, RoutedEventArgs e)
         {
@@ -71,6 +96,8 @@ namespace NakupniSeznam
             string cesta = $"{Environment.CurrentDirectory}/file.json";
             if (File.Exists(cesta))
             {
+                List<string> informace = new List<string>();
+
                 string vypisdata = File.ReadAllText(cesta);
                 JSON_data json = JsonConvert.DeserializeObject<JSON_data>(vypisdata);
                 foreach (var item in nakup.NakupniListek)
@@ -80,12 +107,13 @@ namespace NakupniSeznam
             }
         }
 
+
+
         private void polozky_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter) { AddButton_Click(sender, e); }
         }
     }
-
 }
 
 
